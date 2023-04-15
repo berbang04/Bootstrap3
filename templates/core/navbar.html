@@ -21,14 +21,20 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="fdsjfbkjd.html">Write</a>
                             </li>
-
+                            {% if not request.user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link " href="#">Sign In</a>
+                                <a class="nav-link " href="{% url 'user_profile:register_view'%}">Sign In</a>
                             </li>
                             <li class="nav-item  ">
-                                <a class="nav-link btn btn-dark text-light rounded-pill px-3  " href="#">Get
-                                    Started</a>
+                                <a class="nav-link btn btn-dark text-light rounded-pill px-3  " href="{% url 'user_profile:login_view'%}">
+                                    Login</a>
                             </li>
+                            {% else %}
+                            
+                            <li class="nav-item  ">
+                                <a class="nav-link btn btn-dark text-light rounded-pill px-3  " href="{% url 'user_profile:logout_view'%}">Logout</a>
+                            </li>
+                            {% endif %}
                         </ul>
 
                     </div>
